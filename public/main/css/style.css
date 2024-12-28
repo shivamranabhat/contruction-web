@@ -454,6 +454,98 @@ header.header-fixed .logo {
     font-size: 12px;
     margin-left: 5px;
 }
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  /* Slides */
+  .carousel-slide {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Left-aligned content */
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    text-align: left;
+    color: #fff;
+    max-width: 45%;
+  }
+
+  .carousel-caption h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: orange;
+  }
+
+  .carousel-caption h1 span {
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .carousel-caption p {
+    font-size: 1.8rem;
+    margin: 15px 0;
+    color: #f0f0f0;
+  }
+
+  .carousel-caption .cta-btn {
+    display: inline-block;
+    border-radius: none !important;
+    background-color: orange;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+
+  .carousel-caption .cta-btn:hover {
+    background-color: #d67e00;
+  }
+
+  /* Navigation Arrows */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  .carousel-btn.prev {
+    left: 10px;
+  }
+
+  .carousel-btn.next {
+    right: 10px;
+  }
 
 /* Submenu */
 .ham-menu .submenu {
@@ -5659,10 +5751,11 @@ header.construct .cart-box {
 }
 
 #welcome-to-construct .col-lg-5 .img-holder:before {
-    background: #EDB005;
+    background: rgb(33,168,136);
 }
 #welcome-to-construct .col-lg-5 .img-holder img {
     max-width: none;
+    cursor: pointer;
     transition: all .3s ease;
 }
 #welcome-to-construct:hover .col-lg-5 .img-holder img {
@@ -5697,7 +5790,7 @@ header.construct .cart-box {
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
-    background: #EFA600;
+    background: rgb(33,168,136);
     display: inline-block;
     padding: 0 49px;
     margin: 0;
@@ -5763,7 +5856,7 @@ header.construct .cart-box {
     transition: all .3s ease;
 }
 #testimonials-construct-home .owl-theme .owl-nav [class*=owl-]:hover {
-    background: #36ABFC;
+    background: #E3960A;
     color: #fff;
 }
 
@@ -5793,7 +5886,7 @@ header.construct .cart-box {
     border: 1px solid #565B64;
 }
 #our-team-construct .single-construct-member .content:before {
-    background: #EFA600;
+    background: rgb(33,168,136, .8);
 }
 #our-team-construct .single-construct-member:hover .content:before, 
 #our-team-construct .single-construct-member:focus .content:before, 
@@ -6057,7 +6150,7 @@ header.construct .cart-box {
 /** ====== footer construct styles ====== **/
 
 footer.construct {
-    background: #161616;
+    background: #d6d6d6;
     padding: 80px 0 0px;
 }
 footer.construct .container {
@@ -6065,11 +6158,11 @@ footer.construct .container {
 }
 footer.construct .widget h3 {
     color: #EFA600;
-    border-color: #262728;
+    border-color: #747474;
 }
 footer.construct .widget .popular-post li,
 footer.construct .widget .contact-info li {
-    border-color: #262728;
+    border-color: #747474;
 }
 footer.construct .widget p,
 footer.construct .widget .popular-post li a h5,
@@ -6079,12 +6172,8 @@ footer.construct .widget .contact-info li {
 footer.construct .widget a.read-more {
     color: #EFA600;
 }
+
 footer.construct .widget .social li a {
-    background: none;
-    border: 1px solid #EFA600;
-    color: #EFA600;
-}
-footer.construct .widget .social li a:hover {
     background: #FFBB00;
     border: 1px solid #FFBB00;
     color: #000;
@@ -6115,7 +6204,7 @@ footer.construct .widget .our-services li a {
     text-transform: capitalize;
     line-height: 24px;
     font-family: 'Open Sans';
-    border-bottom: 1px solid #2C2C2E;
+    border-bottom: 1px solid #747474;
     display: block;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -6123,7 +6212,7 @@ footer.construct .widget .our-services li a {
 }
 footer.construct .widget .our-services li a:hover:before,
 footer.construct .widget .our-services li a:hover {
-    color: #FFBB00;
+    color: #E3960A;
 }
 footer.construct .widget .our-services li:last-child a {
     border-bottom: 0;
@@ -6150,7 +6239,7 @@ footer.construct .widget img.positioned {
 /** ====== bottom bar construct styles ====== **/
 
 #bottom-bar.construct {
-    background: #0F0F0F;
+    background: #afafaf;
 }
 #bottom-bar.construct .container p {
     color: #3F3F3F;
@@ -6393,10 +6482,11 @@ ul.why-choose-us-facts li .content p {
     border-top: 2px solid #FBB716;
     padding: 0 37px 0 45px;
     padding-top: 40px;
+    cursor: pointer;
 }
 .single-we-are-expert:hover .content {
     border-color: #000000;
-    background: rgba(255,180,0, .90);
+    background: rgb(33,168,136, .8);
 }
 .single-we-are-expert:hover .content h2,
 .single-we-are-expert:hover .content p {
@@ -6566,7 +6656,8 @@ header.construct.header-curvy {
 header.construct.header-curvy .logo {
     position: relative;   
     margin: 0;
-    padding-top: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
     height: 100%;
     padding-right: 30px;
 }
@@ -7348,7 +7439,7 @@ header.construct.header-curvy.header-fixed .mainmenu-container > ul > li.dropdow
     padding: 20px;
 }
 .single-project-item .content-wrapper:before {
-    background: rgba(73,147,220, .9);
+    background: rgb(33,168,136, .8);
 }
 .single-project-item .content {
     display: table;

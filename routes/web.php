@@ -10,8 +10,11 @@ use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\ContactContentController; 
 use App\Http\Controllers\AboutContentController; 
 use App\Http\Controllers\BodyContentController;  
+use App\Http\Controllers\ServiceController;  
+use App\Http\Controllers\ServiceCategoryController;  
 use App\Http\Controllers\BlogController;  
 use App\Http\Controllers\CategoryController;  
+use App\Http\Controllers\BlogCategoryController;  
 use App\Http\Controllers\TestimonialController;  
 use App\Http\Controllers\TagController;  
 use App\Http\Controllers\OpenGraphController;  
@@ -24,6 +27,7 @@ use App\Http\Controllers\ExtrapageController;
 use App\Http\Controllers\FaqController;  
 use App\Http\Controllers\TeamController;  
 use App\Http\Controllers\GalleryController;  
+use App\Http\Controllers\SliderController;  
 
 Route::fallback(function () {
     abort(404);
@@ -107,8 +111,23 @@ Route::prefix('/dashboard')->group(function () {
             Route::delete('/delete/{slug}', 'destroy')->name('main.destroy');
         });
     });
+    Route::prefix('/')->controller(CategoryController::class)->group(function () {
+        Route::get('categories/', 'index')->name('categories');
+        Route::get('category/create', 'create')->name('category.create');
+        Route::post('category/store', 'store')->name('category.store');
+        Route::get('category/{slug}', 'edit')->name('category.edit');
+        Route::put('category/update/{slug}', 'update')->name('category.update');
+        Route::delete('category/delete/{slug}', 'destroy')->name('category.destroy');
+    });
   
-
+    Route::prefix('/blog')->controller(BlogCategoryController::class)->group(function () {
+        Route::get('categories/', 'index')->name('blogCategories');
+        Route::get('category/create', 'create')->name('blogCategory.create');
+        Route::post('category/store', 'store')->name('blogCategory.store');
+        Route::get('category/{slug}', 'edit')->name('blogCategory.edit');
+        Route::put('category/update/{slug}', 'update')->name('blogCategory.update');
+        Route::delete('category/delete/{slug}', 'destroy')->name('blogCategory.destroy');
+    });
     //Routes for blog
     Route::prefix('/')->controller(BlogController::class)->group(function () {
         Route::get('blogs/', 'index')->name('blogs');
@@ -119,16 +138,36 @@ Route::prefix('/dashboard')->group(function () {
         Route::put('blog/update/{slug}', 'update')->name('blog.update');
         Route::delete('blog/delete/{slug}', 'destroy')->name('blog.destroy');
     });
-  
-
-    Route::prefix('/')->controller(CategoryController::class)->group(function () {
-        Route::get('categories/', 'index')->name('categories');
-        Route::get('category/create', 'create')->name('category.create');
-        Route::post('category/store', 'store')->name('category.store');
-        Route::get('category/{slug}', 'edit')->name('category.edit');
-        Route::put('category/update/{slug}', 'update')->name('category.update');
-        Route::delete('category/delete/{slug}', 'destroy')->name('category.destroy');
+    Route::prefix('/')->controller(SliderController::class)->group(function () {
+        Route::get('sliders/', 'index')->name('sliders');
+        Route::get('slider/create', 'create')->name('slider.create');
+        Route::post('slider/store', 'store')->name('slider.store');
+        Route::get('slider/{slug}', 'edit')->name('slider.edit');
+        Route::put('slider/update/{slug}', 'update')->name('slider.update');
+        Route::delete('slider/delete/{slug}', 'destroy')->name('slider.destroy');
     });
+    Route::prefix('/service')->controller(ServiceCategoryController::class)->group(function () {
+        Route::get('categories/', 'index')->name('serviceCategories');
+        Route::get('category/create', 'create')->name('serviceCategory.create');
+        Route::post('category/store', 'store')->name('serviceCategory.store');
+        Route::get('category/{slug}', 'edit')->name('serviceCategory.edit');
+        Route::put('category/update/{slug}', 'update')->name('serviceCategory.update');
+        Route::delete('category/delete/{slug}', 'destroy')->name('serviceCategory.destroy');
+    });
+    //Routes for blog
+    Route::prefix('/')->controller(ServiceController::class)->group(function () {
+        Route::get('services/', 'index')->name('services');
+        Route::get('service/create', 'create')->name('service.create');
+        Route::post('service/upload-service-img', 'uploadCkImage')->name('serviceCkeditor.upload');
+        Route::post('service/store', 'store')->name('service.store');
+        Route::get('service/{slug}', 'edit')->name('service.edit');
+        Route::put('service/update/{slug}', 'update')->name('service.update');
+        Route::delete('service/delete/{slug}', 'destroy')->name('service.destroy');
+    });
+  
+    
+
+   
     Route::prefix('/')->controller(TestimonialController::class)->group(function () {
         Route::get('testimonials/', 'index')->name('testimonials');
         Route::get('testimonial/create', 'create')->name('testimonial.create');
@@ -251,7 +290,7 @@ Route::controller(PageController::class)->group(function()
     Route::get('/team','team')->name('home.team');
     Route::get('/contact','contact')->name('home.contact');
     Route::get('/news','blogs')->name('home.blogs');
-    Route::get('/blog','blog')->name('home.blog');
+    Route::get('/news-details','blog')->name('home.blog');
     Route::get('/our-business','business')->name('home.business');
     Route::get('/projects','projects')->name('home.projects');
 });

@@ -24,7 +24,7 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="text-box">
-                            <p>ConstructPrss, 598, Mallin Street <br>New Youk, NY 100 654</p>
+                            <p>Pokhara, Lakeside<br> Gandaki, Nepal</p>
                         </div>
                     </li>
                     <li>
@@ -32,7 +32,7 @@
                             <i class="fa fa-envelope-o"></i>
                         </div>
                         <div class="text-box">
-                            <p>info@constructpress.com <br>support@constructpress.com</p>
+                            <p>info@rangin.com <br>support@rangin.com</p>
                         </div>
                     </li>
                     <li>

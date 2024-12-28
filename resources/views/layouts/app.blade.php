@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard | Construction</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('main/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{asset('main/img/favicon.png')}}" />
 
     <!-- Library / Plugin Css Build -->
     <link rel="stylesheet" href="{{asset('assets/css/core/libs.min.css')}}" />
@@ -65,7 +65,7 @@
         <div class="sidebar-header d-flex align-items-center justify-content-start">
             <a class="navbar-brand d-flex align-items-center gap-1">
                 <div class="logo-main">
-                    <img src="{{asset('main/images/logo.svg')}}" width="200" alt="logo">
+                    <img src="{{asset('main/img/Nex Gen.png')}}" width="100" alt="logo">
                 </div>
                 <!--logo End-->
             </a>
@@ -105,6 +105,23 @@
                                 </svg>
                             </i>
                             <span class="item-name">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{request()->segment(1) == 'slider' || request()->segment(2) ==  'slider' ? 'active' : ''}}"
+                            aria-current="page" href="{{route('sliders')}}">
+                            <i class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" class="icon-20" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <g id="Interface / Slider_02">
+                                        <path id="Vector"
+                                            d="M14 18H21M3 18H5M5 18C5 19.3807 6.11929 20.5 7.5 20.5C8.88071 20.5 10 19.3807 10 18C10 16.6193 8.88071 15.5 7.5 15.5C6.11929 15.5 5 16.6193 5 18ZM20 12H21M3 12H10M13 6H21M13 6C13 4.61929 11.8807 3.5 10.5 3.5C9.11929 3.5 8 4.61929 8 6C8 7.38071 9.11929 8.5 10.5 8.5C11.8807 8.5 13 7.38071 13 6ZM3 6H4M16.5 14.5C15.1193 14.5 14 13.3807 14 12C14 10.6193 15.1193 9.5 16.5 9.5C17.8807 9.5 19 10.6193 19 12C19 13.3807 17.8807 14.5 16.5 14.5Z"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                </svg>
+                            </i>
+                            <span class="item-name">Sliders</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -197,10 +214,78 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link {{request()->segment(2) == 'blogs' || request()->segment(2)=='blog' ? 'active' : ''}}"
-                            href="{{route('blogs')}}">
+                        <a class="nav-link {{request()->segment(2) == 'service' || request()->segment(2)=='services' ? 'active' : ''}}"
+                            data-bs-toggle="collapse" href="#sidebar-service" role="button" aria-expanded="false"
+                            aria-controls="sidebar-service">
+                            <i class="icon">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-20" width="20" fill="currentColor"
+                                    viewBox="0 0 48 48">
+                                    <g id="Layer_2" data-name="Layer 2">
+                                        <g id="invisible_box" data-name="invisible box">
+                                            <rect width="48" height="48" fill="none" />
+                                            <rect width="48" height="48" fill="none" />
+                                            <rect width="48" height="48" fill="none" />
+                                        </g>
+                                        <g id="icons_Q2" data-name="icons Q2">
+                                            <g>
+                                                <path
+                                                    d="M28.7,18.8l-1.8,2.9,1.4,1.4,2.9-1.8,1,.4L33,25h2l.8-3.3,1-.4,2.9,1.8,1.4-1.4-1.8-2.9a4.2,4.2,0,0,0,.4-1L43,17V15l-3.3-.8a4.2,4.2,0,0,0-.4-1l1.8-2.9L39.7,8.9l-2.9,1.8-1-.4L35,7H33l-.8,3.3-1,.4L28.3,8.9l-1.4,1.4,1.8,2.9a4.2,4.2,0,0,0-.4,1L25,15v2l3.3.8A4.2,4.2,0,0,0,28.7,18.8ZM34,14a2,2,0,1,1-2,2A2,2,0,0,1,34,14Z" />
+                                                <path
+                                                    d="M42.2,28.7a5.2,5.2,0,0,0-4-1.1l-9.9,1.8a4.5,4.5,0,0,0-1.4-3.3L19.8,19H5a2,2,0,0,0,0,4H18.2l5.9,5.9a.8.8,0,0,1-1.2,1.2l-3.5-3.5a2,2,0,0,0-2.8,2.8l3.5,3.5a4.5,4.5,0,0,0,3.4,1.4,5.7,5.7,0,0,0,1.8-.3h0l13.6-2.4a1,1,0,0,1,.8.2.9.9,0,0,1,.3.7,1,1,0,0,1-.8,1L20.6,36.9,9.7,28H5a2,2,0,0,0,0,4H8.3l11.1,9.1,20.5-3.7a5,5,0,0,0,2.3-8.7Z" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </i>
+                            <span class="item-name">Services</span>
+                            <i class="right-icon">
+                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </i>
+                        </a>
+                        <ul class="sub-nav collapse" id="sidebar-service" data-bs-parent="#sidebar-menu">
+                            <li class="nav-item">
+                                <a class="nav-link {{request()->segment(2) == 'service' && request()->segment(3)== null || request()->segment(2) == 'services' && request()->segment(3)== null ? 'text-primary' : ''}}"
+                                    href="{{route('services')}}">
+                                    <i class="icon">
+                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> Lists </i>
+                                    <span class="item-name">Lists</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {{request()->segment(2) == 'service' && request()->segment(3) == 'category' || request()->segment(3) == 'services' || request()->segment(2) == 'blogs' && request()->segment(3) == 'category' || request()->segment(3) == 'categories' ? 'text-primary' : ''}}"
+                                    href="{{route('serviceCategories')}}">
+                                    <i class="icon">
+                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> Category </i>
+                                    <span class="item-name">Category</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{request()->segment(2) == 'blog' || request()->segment(2)=='blogs' ? 'active' : ''}}"
+                            data-bs-toggle="collapse" href="#sidebar-blog" role="button" aria-expanded="false"
+                            aria-controls="sidebar-blog">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -216,23 +301,67 @@
                                 </svg>
                             </i>
                             <span class="item-name">Blogs</span>
+                            <i class="right-icon">
+                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </i>
                         </a>
+                        <ul class="sub-nav collapse" id="sidebar-blog" data-bs-parent="#sidebar-menu">
+                            <li class="nav-item">
+                                <a class="nav-link {{request()->segment(2) == 'blog' && request()->segment(3)== null || request()->segment(2) == 'blogs' && request()->segment(3)== null ? 'text-primary' : ''}}"
+                                    href="{{route('blogs')}}">
+                                    <i class="icon">
+                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> Lists </i>
+                                    <span class="item-name">Lists</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {{request()->segment(2) == 'blog' && request()->segment(3) == 'category' || request()->segment(3) == 'categories' || request()->segment(2) == 'blogs' && request()->segment(3) == 'category' || request()->segment(3) == 'categories' ? 'text-primary' : ''}}"
+                                    href="{{route('blogCategories')}}">
+                                    <i class="icon">
+                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> Category </i>
+                                    <span class="item-name">Category</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->segment(2) == 'categories' || request()->segment(2)=='category' ? 'active' : '' }}"
                             href="{{ route('categories') }}">
                             <i class="icon">
                                 <!-- New Icon for Categories -->
-                                <svg width="20" class="icon-20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.75 4.5L4.5 3.75H10.5L11.25 4.5V10.5L10.5 11.25H4.5L3.75 10.5V4.5ZM5.25 5.25V9.75H9.75V5.25H5.25ZM13.5 3.75L12.75 4.5V10.5L13.5 11.25H19.5L20.25 10.5V4.5L19.5 3.75H13.5ZM14.25 9.75V5.25H18.75V9.75H14.25ZM17.25 20.25H15.75V17.25H12.75V15.75H15.75V12.75H17.25V15.75H20.25V17.25H17.25V20.25ZM4.5 12.75L3.75 13.5V19.5L4.5 20.25H10.5L11.25 19.5V13.5L10.5 12.75H4.5ZM5.25 18.75V14.25H9.75V18.75H5.25Z" fill="currentColor" />
+                                <svg width="20" class="icon-20" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.75 4.5L4.5 3.75H10.5L11.25 4.5V10.5L10.5 11.25H4.5L3.75 10.5V4.5ZM5.25 5.25V9.75H9.75V5.25H5.25ZM13.5 3.75L12.75 4.5V10.5L13.5 11.25H19.5L20.25 10.5V4.5L19.5 3.75H13.5ZM14.25 9.75V5.25H18.75V9.75H14.25ZM17.25 20.25H15.75V17.25H12.75V15.75H15.75V12.75H17.25V15.75H20.25V17.25H17.25V20.25ZM4.5 12.75L3.75 13.5V19.5L4.5 20.25H10.5L11.25 19.5V13.5L10.5 12.75H4.5ZM5.25 18.75V14.25H9.75V18.75H5.25Z"
+                                        fill="currentColor" />
                                 </svg>
                             </i>
                             <span class="item-name">Categories</span>
                         </a>
                     </li>
 
-                  
+
                     <li class="nav-item">
                         <a class="nav-link {{request()->segment(2) == 'testimonials' || request()->segment(2)=='testimonial' ? 'active' : ''}}"
                             href="{{ route('testimonials') }}">
@@ -254,7 +383,7 @@
                             <span class="item-name">Testimonials</span>
                         </a>
                     </li>
-                   
+
 
                     <li>
                         <hr class="hr-horizontal">
@@ -293,7 +422,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{request()->segment(2) == 'page' ? 'active' : ''}}" href="{{route('pages')}}">
+                        <a class="nav-link {{request()->segment(2) == 'page' ? 'active' : ''}}"
+                            href="{{route('pages')}}">
                             <i class="icon">
                                 <svg version="1.1" id="PAGE" xmlns="http://www.w3.org/2000/svg" width="20"
                                     class="icon-20" fill="currentColor" stroke="currentColor"
@@ -336,7 +466,7 @@
                             <span class="item-name">Pages</span>
                         </a>
                     </li>
-                  
+
 
                     <li class="nav-item">
                         <a class="nav-link {{request()->segment(2) == 'about' ? 'active' : ''}}"
@@ -414,7 +544,7 @@
                             <span class="item-name">Subscribers</span>
                         </a>
                     </li>
-                    
+
 
                     <li>
                         <hr class="hr-horizontal">
@@ -594,7 +724,7 @@
                         <!--Logo start-->
                         <div class="logo-main">
                             <div class="logo-normal">
-                                <img src="{{asset('main/images/logo.svg')}}" class="rounded-circle" width="100"
+                                <img src="{{asset('main/img/Nex Gen.png')}}" class="rounded-circle" width="100"
                                     alt="Logo">
                             </div>
                         </div>
@@ -625,7 +755,7 @@
                                 <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="rounded-circle" style="border:1px solid #2e8fff">
-                                        <img src="{{asset('main/images/logo.svg')}}" alt="User-Profile"
+                                        <img src="{{asset('main/img/Nex Gen.png')}}" alt="User-Profile"
                                             class="img-fluid avatar avatar-70">
                                     </span>
                                     <div class="caption ms-1 d-none d-md-block ">

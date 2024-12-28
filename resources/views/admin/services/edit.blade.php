@@ -6,10 +6,10 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Blogs</h4>
+                                <h4 class="card-title">Service</h4>
                             </div>
                             <div class="back">
-                                <a href="{{route('blogs')}}"
+                                <a href="{{route('services')}}"
                                     class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3">
                                     <i class="btn-inner">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 25 25"
@@ -23,16 +23,16 @@
                             </div>
                         </div>
                         <div class="card-body mt-2">
-                            <form method="POST" action="{{ route('blog.update',$blog->slug) }}"
+                            <form method="POST" action="{{ route('service.update',$service->slug) }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="blog_category_id">Category</label>
+                                    <label class="form-label" for="service_category_id">Category</label>
                                     <select
-                                        class="form-select @error('blog_category_id') is-invalid @enderror {{ $errors->has('blog_category_id') ? 'error' : '' }}"
-                                        name="blog_category_id" id="blog_category_id">
-                                        <option value="{{$blog->blog_category_id}}">{{ $blog->category->name }}
+                                        class="form-select @error('service_category_id') is-invalid @enderror {{ $errors->has('service_category_id') ? 'error' : '' }}"
+                                        name="service_category_id" id="service_category_id">
+                                        <option value="{{$service->service_category_id}}">{{ $service->serviceCategory->name }}
                                         </option>
                                         @forelse ($categories as $category)
                                         <option value="{{ $category->id }}" class="text-capitalize">{{ $category->name
@@ -41,62 +41,15 @@
                                         <option value="#" class="text-capitalize">No category found</option>
                                         @endforelse
                                     </select>
-                                    @error('blog_category_id')
+                                    @error('service_category_id')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="title">Title</label>
-                                    <input type="text" name="title" id="title"
-                                        class="form-control @error('title') is-invalid @enderror {{ $errors->has('title') ? 'error' : '' }}"
-                                        value="{{ $blog->title }}" />
-                                    @error('title')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-                                <div class="form-outline mb-2">
-                                    <label class="form-label" for="subtitle">Subtitle</label>
-                                    <input type="text" name="subtitle" id="subtitle"
-                                        class="form-control @error('subtitle') is-invalid @enderror {{ $errors->has('subtitle') ? 'error' : '' }}"
-                                        value="{{ $blog->subtitle }}" />
-                                    @error('subtitle')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-                                <div class="row align-items-end">
-                                    <div class="image-area"><img id="mainImage"
-                                            src="{{asset('storage/'.$blog->main_image)}}" width="150"></div>
-                                    <div class="col-6 form-outline mb-3">
-                                        <label class="form-label" for="main_image">Main Image</label>
-                                        <input class="form-control" type="file" id="main_image" name="main_image" />
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-outline mb-3">
-                                            <label class="form-label" for="main_img_alt">Image Alt</label>
-                                            <input type="text" name="main_img_alt" id="main_img_alt"
-                                                class="form-control @error('main_img_alt') is-invalid @enderror {{ $errors->has('main_img_alt') ? 'error' : '' }}"
-                                                value="{{ $blog->main_img_alt  }}" />
-                                            @error('main_img_alt')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-outline mb-3">
-                                    <label class="form-label" for="author">Author</label>
-                                    <input type="text" name="author" id="author"
-                                        class="form-control @error('author') is-invalid @enderror {{ $errors->has('author') ? 'error' : '' }}"
-                                        value="{{ $blog->author  }}" />
-                                    @error('author')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-
+                               
                                 <div class="form-outline mb-3">
                                     <label class="form-label" for="description">Description</label>
                                     <textarea name="description" id="description"
-                                        class="form-control @error('description') is-invalid @enderror {{ $errors->has('description') ? 'error' : '' }}">{{ $blog->description }}</textarea>
+                                        class="form-control @error('description') is-invalid @enderror {{ $errors->has('description') ? 'error' : '' }}">{{ $service->description }}</textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -114,7 +67,7 @@
         <script>
             CKEDITOR.ClassicEditor.create(document.getElementById("description"), {
                 ckfinder:{
-                        uploadUrl:"{{route('ckeditor.upload',['_token'=>csrf_token()])}}",
+                        uploadUrl:"{{route('serviceCkeditor.upload',['_token'=>csrf_token()])}}",
                     },
                 toolbar: {
                     items: [

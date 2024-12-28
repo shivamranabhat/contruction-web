@@ -26,6 +26,23 @@
                             <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-outline mb-4">
+                                    <label class="form-label" for="type">Category</label>
+                                    <select
+                                        class="form-select @error('blog_category_id') is-invalid @enderror {{ $errors->has('blog_category_id') ? 'error' : '' }}"
+                                        name="blog_category_id" id="blog_category_id" required>
+                                        <option disabled selected>Select a category</option>
+                                        @forelse ($categories as $category)
+                                        <option value="{{ $category->id }}" class="text-capitalize">{{ $category->name
+                                            }}</option>
+                                        @empty
+                                        <option class="text-capitalize">No category found</option>
+                                        @endforelse
+                                    </select>
+                                    @error('blog_category_id')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-outline mb-4">
                                     <label class="form-label" for="title">Title</label>
                                     <input type="text" name="title" id="title"
                                         class="form-control @error('title') is-invalid @enderror {{ $errors->has('title') ? 'error' : '' }}"
@@ -59,7 +76,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-outline mb-3">
                                     <label class="form-label" for="author">Author</label>
                                     <input type="text" name="author" id="author"
@@ -80,7 +97,7 @@
                                 </div>
 
                                 <button type="submit"
-                                    class="btn btn-primary btn-block rounded-pill mb-3">Create</button>
+                                    class="btn btn-primary btn-block rounded mb-3">Create</button>
                             </form>
                         </div>
                     </div>
@@ -89,7 +106,6 @@
         </div>
         @push('scripts')
         <script>
-           
             CKEDITOR.ClassicEditor.create(document.getElementById("description"), {
                 ckfinder:{
                         uploadUrl:"{{route('ckeditor.upload',['_token'=>csrf_token()])}}",

@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix plumbing outside">
+            <a href="{{route('home.blog')}}" class="single-project-item mix plumbing outside">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v2/2.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix drain plumbing bathroom">
+            <a href="{{route('home.blog')}}" class="single-project-item mix drain plumbing bathroom">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/3.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix kitchen outside drain bathroom">
+            <a href="{{route('home.blog')}}" class="single-project-item mix kitchen outside drain bathroom">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/4.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix kitchen  bathroom">
+            <a href="{{route('home.blog')}}" class="single-project-item mix kitchen  bathroom">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/5.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix kitchen drain ">
+            <a href="{{route('home.blog')}}" class="single-project-item mix kitchen drain ">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/6.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix kitchen drain bathroom">
+            <a href="{{route('home.blog')}}" class="single-project-item mix kitchen drain bathroom">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/7.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -127,7 +127,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix kitchen drain bathroom">
+            <a href="{{route('home.blog')}}" class="single-project-item mix kitchen drain bathroom">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/8.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix kitchen drain bathroom">
+            <a href="{{route('home.blog')}}" class="single-project-item mix kitchen drain bathroom">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/9.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">
@@ -155,7 +155,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="single-project-item mix kitchen drain bathroom">
+            <a href="{{route('home.blog')}}" class="single-project-item mix kitchen drain bathroom">
                 <div class="img-wrap">
                     <img src="{{asset('main/img/project-v4/10.jpg')}}" alt="">
                     <div class="content-wrapper hvr-sweep-to-right">

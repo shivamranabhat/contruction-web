@@ -29,6 +29,12 @@
                     
                     
                 </div>
+                <div class="single-sidebar download-brochure">
+							<h4>Download</h4>
+							<ul>
+								<li><a href="#"><i class="fa fa-download"></i> Download Brochure</a></li>
+							</ul>
+						</div>
             </div>
             <div class="col-md-8 tab-content">
                 <div class="service-two-tab-content tab-pane fade in active " id="construction">

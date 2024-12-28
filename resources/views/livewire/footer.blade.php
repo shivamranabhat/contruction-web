@@ -1,16 +1,16 @@
 <div>
     <footer class="construct">
 		<div class="container">
-			<div class="row">
+			<div class="row" style="margin-bottom:5rem">
 				<!-- .widget -->
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 widget">
-					<img class="positioned wow slideInUp " src="{{asset('main/img/resources/footer-crane.png')}}" alt="">
+					<img class="wow slideInUp " src="{{asset('main/img/Nex Gen.png')}}" width="250" alt="">
+				
 				</div> <!-- /.widget -->
 				<!-- .widget -->
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 widget">
-					<h3>About Us</h3>
-					<p>Lorem ipsum dolor sit amet, consect- <br>etur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali qua. Ut enim ad minim veniam, quis no strud exercitation ullamco. Ut enim ad minim.</p>
-					<a href="#" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
+					<h3>Connect With Us</h3>
+					<p>Lorem ipsum dolor sit amet, consect- <br>etur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali qua. Ut enim ad minim veniam.</p>
 					<ul class="social">
 						<li><a href="#" class="hvr-radial-out"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="#" class="hvr-radial-out"><i class="fa fa-instagram"></i></a></li>
@@ -21,11 +21,9 @@
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 widget clearboth-tab clearboth-480">
 					<h3>Quick Links</h3>
 					<ul class="our-services">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Our Business</a></li>
-						<li><a href="#">Projects</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Contact Us</a></li>
+						<li><a href="/our-business">Our Business</a></li>
+						<li><a href="/projects">Projects</a></li>
+						<li><a href="/contact">Contact Us</a></li>
 					</ul>
 				</div> <!-- /.widget -->
 				<!-- .widget -->
@@ -52,7 +50,7 @@
 				</div> <!-- /.copyright -->
 				<!-- .credit -->
 				<div class="credit pull-right">
-					<p>Created by: Rangin</p>
+					<p>Created by: <img src="https://rangin.com.np/assets/images/logo.png" width="100" alt="Rangin"></p>
 				</div> <!-- /.credit -->
 			</div>
 		</div> 

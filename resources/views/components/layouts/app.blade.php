@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{ $title ?? 'Page Title' }}</title>
-    <link rel="stylesheet" href="{{asset('main/css/style.css')}}">
-    <!-- responsive stylesheet -->
-    <link rel="stylesheet" href="{{asset('main/css/responsive.css')}}">
+    <!-- main stylesheet -->
+	<link rel="stylesheet" href="{{ asset('main/css/style.css') }}?v={{ time() }}">
+	<!-- responsive stylesheet -->
+	<link rel="stylesheet" href="{{ asset('main/css/responsive.css') }}?v={{ time() }}">
+
 </head>
 
 <body>
@@ -37,6 +39,7 @@
 	<script src="{{asset('main/js/jquery.easing.min.js')}}"></script> <!-- jquery easing JS -->
 	<script src="{{asset('main/js/jquery.mixitup.min.js')}}"></script> <!-- MixIt UP JS -->
 	<script src="{{asset('main/js/custom.js')}}"></script> <!-- Custom JS -->
+	<script src="{{asset('main/js/slider.js')}}"></script> <!-- slider JS -->
 </body>
 
 </html>

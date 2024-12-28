@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use App\Http\Requests\BlogStoreRequest;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\BlogCategory;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -27,7 +27,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blogs.create');
+        $categories = BlogCategory::select('id','name')->latest()->get();
+        return view('admin.blogs.create',compact('categories'));
     }
 
       /**
@@ -40,9 +41,9 @@ class BlogController extends Controller
             // Generate a unique file name
             $fileName = $uploadedFile->getClientOriginalName();
             // Move the file to the desired directory
-            $uploadedFile->move(public_path('storage/blogs/media'), $fileName);
+            $uploadedFile->move(public_path('storage/blogs/images'), $fileName);
             // Construct the URL to the uploaded file
-            $url = asset('storage/blogs/media/' . $fileName);
+            $url = asset('storage/blogs/images/' . $fileName);
             // Return JSON response
             return response()->json(['file' => $fileName, 'uploaded' => 1, 'url' => $url]);
         } else {
@@ -54,11 +55,24 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(BlogStoreRequest $request)
+    public function store(Request $request)
     {
         try {
             // Validate the request
-            $formFields = $request->validated();
+            $formFields = $request->validate([
+                'blog_category_id'=>'required',
+                'title' => 'required|unique:blogs,title',
+                'subtitle' => 'required',
+                'author' => 'required',
+                'main_img_alt' => 'required',
+                'description' => 'required',
+                'main_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif|max:2048',               
+            ],
+            [
+                'title.unique' => 'Blog with this title already exists',
+                'blog_category_id.required'=>'Please select a category'
+            ]
+        );
     
             // Handle main image upload
             if ($request->hasFile('main_image')) {
@@ -95,7 +109,8 @@ class BlogController extends Controller
     public function edit(String $slug)
     {
         $blog = Blog::whereSlug($slug)->first();
-        return view('admin.blogs.edit',compact('blog'));
+        $categories = BlogCategory::select('id','name')->latest()->get();
+        return view('admin.blogs.edit',compact('blog','categories'));
     }
 
     /**
@@ -109,6 +124,7 @@ class BlogController extends Controller
     
             // Validate the request
             $formFields = $request->validate([
+                'blog_category_id'=>'required',
                 'title' => 'required|unique:blogs,title,' . $blog->id,
                 'subtitle' => 'required',
                 'author' => 'required',
@@ -117,7 +133,8 @@ class BlogController extends Controller
                 'main_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048',                
 
             ], [
-                'title.unique' => 'Blog with this title already exists'
+                'title.unique' => 'Blog with this title already exists',
+                'blog_category_id.required'=>'Please select a category'
             ]);
     
             // Handle main image upload
