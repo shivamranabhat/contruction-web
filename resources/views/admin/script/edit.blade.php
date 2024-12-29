@@ -59,7 +59,7 @@
                                     <label class="form-label" for="code">Script</label>
                                     <textarea class="form-control @error('code') is-invalid @enderror {{ $errors->has('code') ? 'error' : '' }}" id="code" name="code" rows="2">{{ $script->code }}</textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block rounded-pill mb-4">Update</button>
+                                <button type="submit" class="btn btn-primary btn-block rounded mb-4">Update</button>
                             </form>
                         </div>
                     </div>

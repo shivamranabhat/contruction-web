@@ -108,7 +108,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{request()->segment(1) == 'slider' || request()->segment(2) ==  'slider' ? 'active' : ''}}"
+                        <a class="nav-link {{request()->segment(2) == 'sliders' || request()->segment(2) ==  'slider' ? 'active' : ''}}"
                             aria-current="page" href="{{route('sliders')}}">
                             <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" class="icon-20" fill="none"
@@ -210,6 +210,60 @@
                                     </i>
                                     <i class="sidenav-mini-icon"> Footer </i>
                                     <span class="item-name">Footer</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{request()->segment(2) == 'project' || request()->segment(2)=='projects' ? 'active' : ''}}"
+                            data-bs-toggle="collapse" href="#sidebar-project" role="button" aria-expanded="false"
+                            aria-controls="sidebar-project">
+                            <i class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-20" width="20" fill="currentColor"
+                                    viewBox="0 0 8 8">
+                                    <path
+                                        d="M0 0v7h1v-7h-1zm7 0v7h1v-7h-1zm-5 1v1h2v-1h-2zm1 2v1h2v-1h-2zm1 2v1h2v-1h-2z" />
+                                </svg>
+                            </i>
+                            <span class="item-name">Projects</span>
+                            <i class="right-icon">
+                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </i>
+                        </a>
+                        <ul class="sub-nav collapse" id="sidebar-project" data-bs-parent="#sidebar-menu">
+                            <li class="nav-item">
+                                <a class="nav-link {{request()->segment(2) == 'project' && request()->segment(3)== null || request()->segment(2) == 'projects' && request()->segment(3)== null ? 'text-primary' : ''}}"
+                                    href="{{route('projects')}}">
+                                    <i class="icon">
+                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> Lists </i>
+                                    <span class="item-name">Lists</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {{request()->segment(2) == 'project' && request()->segment(3) == 'category' || request()->segment(3) == 'projects' || request()->segment(2) == 'blogs' && request()->segment(3) == 'category' || request()->segment(3) == 'categories' ? 'text-primary' : ''}}"
+                                    href="{{route('projectCategories')}}">
+                                    <i class="icon">
+                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> Category </i>
+                                    <span class="item-name">Category</span>
                                 </a>
                             </li>
                         </ul>
@@ -362,29 +416,6 @@
                     </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link {{request()->segment(2) == 'testimonials' || request()->segment(2)=='testimonial' ? 'active' : ''}}"
-                            href="{{ route('testimonials') }}">
-                            <i class="icon">
-                                <svg class="icon-20" width="20" viewBox="0 0 20 20" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-
-                                    <rect x="0" fill="none" width="20" height="20" />
-
-                                    <g>
-
-                                        <path
-                                            d="M4 3h12c.55 0 1.02.2 1.41.59S18 4.45 18 5v7c0 .55-.2 1.02-.59 1.41S16.55 14 16 14h-1l-5 5v-5H4c-.55 0-1.02-.2-1.41-.59S2 12.55 2 12V5c0-.55.2-1.02.59-1.41S3.45 3 4 3zm11 2H4v1h11V5zm1 3H4v1h12V8zm-3 3H4v1h9v-1z" />
-
-                                    </g>
-
-                                </svg>
-                            </i>
-                            <span class="item-name">Testimonials</span>
-                        </a>
-                    </li>
-
-
                     <li>
                         <hr class="hr-horizontal">
                     </li>
@@ -419,6 +450,27 @@
                         <a class="nav-link static-item disabled" tabindex="-1">
                             <span class="default-icon">Extra Components</span>
                             <span class="mini-icon">-</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{request()->segment(2) == 'testimonials' || request()->segment(2)=='testimonial' ? 'active' : ''}}"
+                            href="{{ route('testimonials') }}">
+                            <i class="icon">
+                                <svg class="icon-20" width="20" viewBox="0 0 20 20" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+
+                                    <rect x="0" fill="none" width="20" height="20" />
+
+                                    <g>
+
+                                        <path
+                                            d="M4 3h12c.55 0 1.02.2 1.41.59S18 4.45 18 5v7c0 .55-.2 1.02-.59 1.41S16.55 14 16 14h-1l-5 5v-5H4c-.55 0-1.02-.2-1.41-.59S2 12.55 2 12V5c0-.55.2-1.02.59-1.41S3.45 3 4 3zm11 2H4v1h11V5zm1 3H4v1h12V8zm-3 3H4v1h9v-1z" />
+
+                                    </g>
+
+                                </svg>
+                            </i>
+                            <span class="item-name">Testimonials</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -685,7 +737,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item mb-5">
+                    <li class="nav-item" style="margin-bottom: 5rem">
                         <a class="nav-link {{request()->segment(2) == 'faqs' ? 'active' : ''}}"
                             href="{{route('faqs')}}">
                             <i class="icon">

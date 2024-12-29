@@ -19,12 +19,12 @@
                             </div>
                         </div>
                         <div class="card-body mt-2">
-                            <form action="{{ route('testimonial.update', $testimonial->slug) }}" method="POST">
+                            <form action="{{ route('testimonial.update', $testimonial->slug) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
                                 <!-- Name Field -->
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-3">
                                     <label class="form-label" for="name">Name</label>
                                     <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ $testimonial->name }}" required />
@@ -32,19 +32,14 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-
-                                <!-- Rating Field -->
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="rating">Rating</label>
-                                    <input type="number" name="rating" id="rating" class="form-control @error('rating') is-invalid @enderror"
-                                           value="{{ $testimonial->rating }}" min="1" max="5" required />
-                                    @error('rating')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                <div class="form-outline mb-3">
+                                    <div class="image-area"><img id="imageResult"
+                                        src="{{asset('storage/'.$testimonial->image)}}" width="150"></div>
+                                    <label class="form-label" for="image">Image</label>
+                                    <input class="form-control" type="file" id="image" name="image" />
                                 </div>
-
                                 <!-- Description Field -->
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-3">
                                     <label class="form-label" for="description">Description</label>
                                     <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror" required>{{ $testimonial->description }}</textarea>
                                     @error('description')
@@ -53,7 +48,7 @@
                                 </div>
 
                                 <!-- Submit Button -->
-                                <button type="submit" class="btn btn-primary btn-block rounded-pill mb-3">Update</button>
+                                <button type="submit" class="btn btn-primary btn-block rounded mb-3">Update</button>
                             </form>
                         </div>
                     </div>
@@ -61,4 +56,7 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+    <script src="{{ asset('assets/js/imagePreview.js?v=').time() }}"></script>
+    @endpush
 </x-app-layout>

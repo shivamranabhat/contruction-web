@@ -12,6 +12,8 @@ use App\Http\Controllers\AboutContentController;
 use App\Http\Controllers\BodyContentController;  
 use App\Http\Controllers\ServiceController;  
 use App\Http\Controllers\ServiceCategoryController;  
+use App\Http\Controllers\ProjectController;  
+use App\Http\Controllers\ProjectCategoryController;  
 use App\Http\Controllers\BlogController;  
 use App\Http\Controllers\CategoryController;  
 use App\Http\Controllers\BlogCategoryController;  
@@ -137,6 +139,24 @@ Route::prefix('/dashboard')->group(function () {
         Route::get('blog/{slug}', 'edit')->name('blog.edit');
         Route::put('blog/update/{slug}', 'update')->name('blog.update');
         Route::delete('blog/delete/{slug}', 'destroy')->name('blog.destroy');
+    });
+    Route::prefix('/project')->controller(ProjectCategoryController::class)->group(function () {
+        Route::get('categories/', 'index')->name('projectCategories');
+        Route::get('category/create', 'create')->name('projectCategory.create');
+        Route::post('category/store', 'store')->name('projectCategory.store');
+        Route::get('category/{slug}', 'edit')->name('projectCategory.edit');
+        Route::put('category/update/{slug}', 'update')->name('projectCategory.update');
+        Route::delete('category/delete/{slug}', 'destroy')->name('projectCategory.destroy');
+    });
+    //Routes for project
+    Route::prefix('/')->controller(ProjectController::class)->group(function () {
+        Route::get('projects/', 'index')->name('projects');
+        Route::get('project/create', 'create')->name('project.create');
+        Route::post('project/upload-project-img', 'uploadCkImage')->name('projectCkeditor.upload');
+        Route::post('project/store', 'store')->name('project.store');
+        Route::get('project/{slug}', 'edit')->name('project.edit');
+        Route::put('project/update/{slug}', 'update')->name('project.update');
+        Route::delete('project/delete/{slug}', 'destroy')->name('project.destroy');
     });
     Route::prefix('/')->controller(SliderController::class)->group(function () {
         Route::get('sliders/', 'index')->name('sliders');

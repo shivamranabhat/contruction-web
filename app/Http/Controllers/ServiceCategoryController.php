@@ -27,7 +27,6 @@ class ServiceCategoryController extends Controller
         ]);
         $slug = Str::slug($request['name']);
         ServiceCategory::create($request->all() + ['slug' => $slug]);
-
         return redirect()->route('serviceCategories')->with('success', 'Category created successfully.');
     }
 

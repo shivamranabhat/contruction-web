@@ -109,7 +109,7 @@
                                     @enderror
                                 </div>
                                 <button type="submit"
-                                    class="btn btn-primary btn-block rounded-pill mb-4">Update</button>
+                                    class="btn btn-primary btn-block rounded mb-4">Update</button>
                             </form>
                         </div>
                     </div>

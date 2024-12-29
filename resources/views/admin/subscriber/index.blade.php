@@ -76,7 +76,7 @@
                                                                     </div>
                                                                     <div class="modal-footer justify-content-center">
                                                                         <button type="button"
-                                                                            class="btn btn-secondary rounded-pill"
+                                                                            class="btn btn-secondary rounded"
                                                                             data-dismiss="modal">Close</button>
                                                                         <form
                                                                             action="{{ route('subscriber.destroy', $subscriber->slug) }}"
@@ -84,7 +84,7 @@
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit"
-                                                                                class="btn btn-danger rounded-pill">Yes</button>
+                                                                                class="btn btn-danger rounded">Yes</button>
                                                                         </form>
                                                                     </div>
                                                                 </div>

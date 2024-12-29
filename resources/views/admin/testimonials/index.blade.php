@@ -26,8 +26,8 @@
                                         <thead>
                                             <tr class="ligth">
                                                 <th>S.N.</th>
+                                                <th>Image</th>
                                                 <th>Name</th>
-                                                <th>Rating</th>
                                                 <th>Published at</th>
                                                 <th style="min-width: 100px">Action</th>
                                             </tr>
@@ -36,8 +36,8 @@
                                             @forelse ($testimonials as $testimonial)
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>@if($testimonial->image)<img src="{{asset('storage/'.$testimonial->image)}}" width="50" class="rounded" alt="{{$testimonial->name}}">@else No Image @endif</td>
                                                 <td>{{ $testimonial->name }}</td>
-                                                <td>{{ $testimonial->rating }}</td>
                                                 <td>{{ $testimonial->created_at }}</td>
                                                 <td>
                                                     <div class="flex align-items-center list-user-action">
@@ -102,7 +102,7 @@
                                                                     </div>
                                                                     <div class="modal-footer justify-content-center">
                                                                         <button type="button"
-                                                                            class="btn btn-secondary rounded-pill"
+                                                                            class="btn btn-secondary rounded"
                                                                             data-dismiss="modal">Close</button>
                                                                         <form
                                                                             action="{{ route('testimonial.destroy', $testimonial->slug) }}"
@@ -110,7 +110,7 @@
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit"
-                                                                                class="btn btn-danger rounded-pill">Yes</button>
+                                                                                class="btn btn-danger rounded">Yes</button>
                                                                         </form>
                                                                     </div>
                                                                 </div>
@@ -121,7 +121,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <td colspan="6" class="text-center">No testimonials found</td>
+                                                <td colspan="6" class="text-center">No data found</td>
                                             </tr>
                                             @endforelse
                                         </tbody>

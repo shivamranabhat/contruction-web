@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Faq;
 use Illuminate\Http\Request;
-use App\Http\Requests\FaqStoreRequest;
 use Illuminate\Support\Str;
 
 class FaqController extends Controller
@@ -29,9 +28,12 @@ class FaqController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(FaqStoreRequest $request)
+    public function store(Request $request)
     {
-        $formFields = $request->validated();
+        $formFields = $request->validate([
+            'title'=>'required|string|max:255',
+            'description'=>'required|string',
+        ]);
         $slug = Str::slug($formFields['title'].'-'.Str::random(5));
         Faq::create($formFields+['type'=>'index','slug'=>$slug]);
         return redirect()->route('faqs')->with('message','Faq stored successfully');
@@ -58,10 +60,13 @@ class FaqController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(FaqStoreRequest $request, string $slug)
+    public function update(Request $request, string $slug)
     {
         $details = Faq::whereSlug($slug)->firstOrFail();
-        $formFields = $request->validated();
+        $formFields = $request->validate([
+            'title'=>'required|string|max:255',
+            'description'=>'required|string',
+        ]);
         $slug = Str::slug($formFields['title'].'-'.Str::random(5));
         $details->update($formFields+['slug'=>$slug]);
        return redirect()->route('faqs')->with('message','Faq updated successfully');

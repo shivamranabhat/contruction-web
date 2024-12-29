@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Blogs</h4>
+                            <h4 class="card-title">Categories</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -15,7 +15,7 @@
                                     <x-search />
                                     <div class="col-12 col-md-6 col-lg-6 px-0">
                                         <div class="dataTables_length d-flex justify-content-end mt-3 mt-lg-0 mt-xl-0 px-0" id="datatable_length">
-                                            <a href="{{route('blog.create')}}" class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3">
+                                            <a href="{{route('projectCategory.create')}}" class="text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3">
                                                 <i class="btn-inner">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -31,25 +31,20 @@
                                         <thead>
                                             <tr class="ligth">
                                                 <th>S.N.</th>
-                                                <th>Image</th>
-                                                <th>Title</th>
-                                                <th>Published at</th>
+                                                <th>Name</th>
                                                 <th style="min-width: 100px">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($blogs as $blog)
+                                            @forelse ($categories as $category)
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>@if($blog->main_image)<img src="{{asset('storage/'.$blog->main_image)}}" width="50" class="rounded" alt="{{$blog->title}}">@else No Image @endif</td>
-                                                <td>{{ Str::words($blog->title, 5, '...') }}
-                                                </td>
-                                                <td>{{ $blog->created_at }}</td>
+                                                <td>{{ $category->name }}</td>
                                                 <td>
                                                     <div class="flex align-items-center list-user-action">
                                                         <a class="btn btn-sm btn-icon btn-warning"
                                                             data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            data-original-title="Edit" href="{{route('blog.edit',$blog->slug)}}" aria-label="Edit"
+                                                            data-original-title="Edit" href="{{route('projectCategory.edit', $category->slug)}}" aria-label="Edit"
                                                             data-bs-original-title="Edit">
                                                             <span class="btn-inner">
                                                                 <svg class="icon-20" width="20" viewBox="0 0 24 24"
@@ -71,7 +66,7 @@
                                                                 </svg>
                                                             </span>
                                                         </a>
-                                                        <a class="btn btn-sm btn-icon btn-danger" type="button" data-toggle="modal" data-target="#delete_{{ $blog->slug }}" data-bs-original-title="Delete">
+                                                        <a class="btn btn-sm btn-icon btn-danger" type="button" data-toggle="modal" data-target="#delete_{{ $category->slug }}" data-bs-original-title="Delete">
                                                             <span class="btn-inner">
                                                                 <svg class="icon-20" width="20" viewBox="0 0 24 24"
                                                                     fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +88,7 @@
                                                             </span>
                                                         </a>
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="delete_{{ $blog->slug }}" tabindex="-1" role="dialog"
+                                                        <div class="modal fade" id="delete_{{ $category->slug }}" tabindex="-1" role="dialog"
                                                             aria-labelledby="deleteTitle" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered"
                                                                 role="document">
@@ -117,7 +112,7 @@
                                                                             class="btn btn-secondary rounded"
                                                                             data-dismiss="modal">Close</button>
                                                                         <form
-                                                                            action="{{ route('blog.destroy', $blog->slug) }}"
+                                                                            action="{{ route('projectCategory.destroy', $category->slug) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
@@ -133,16 +128,26 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <td colspan="5" class="text-center py-5">
-                                                    No data found
-                                                </td>
+                                                <td colspan="3" class="text-center">No Categories Found.</td>
                                             </tr>
                                             @endforelse
                                         </tbody>
                                     </table>
                                 </div>
-                                {{ $blogs->links('vendor.pagination.simple-tailwind') }}
-                                <div class="clear"></div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="dataTables_info" id="datatable_info" role="status"
+                                            aria-live="polite">
+                                            Showing {{ $categories->firstItem() }} to {{ $categories->lastItem() }} of
+                                            {{ $categories->total() }} entries
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="dataTables_paginate paging_simple_numbers d-flex justify-content-end">
+                                            {{ $categories->links() }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

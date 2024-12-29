@@ -47,7 +47,7 @@
                                 </div>
 
                                 <button type="submit"
-                                    class="btn btn-primary btn-block rounded-pill mb-3">Update</button>
+                                    class="btn btn-primary btn-block rounded mb-3">Update</button>
                             </form>
                         </div>
                     </div>

@@ -15,7 +15,7 @@ class TestimonialController extends Controller
     {
         $testimonials = Testimonial::filter(request(['search']))
             ->latest()
-            ->select('id', 'name', 'rating', 'description', 'slug', 'created_at')
+            ->select('id', 'name', 'image', 'description', 'slug', 'created_at')
             ->paginate(10);
         
         return view('admin.testimonials.index', compact('testimonials'));
@@ -38,16 +38,20 @@ class TestimonialController extends Controller
             // Validate the request
             $formFields = $request->validate([
                 'name' => 'required|string|max:255',
-                'rating' => 'required|integer|min:1|max:5',
+                'image'=> 'required|image|mimes:jpeg,png,jpg,webp', 
                 'description' => 'required|string',
             ]);
 
             // Generate slug from name
             $slug = Str::slug($formFields['name']);
             $formFields['slug'] = $slug;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time() . '-' . $image->getClientOriginalName();
+                $formFields['image'] = $image->storeAs('testimonials/image', $imageName, 'public');
+            }
             // Create testimonial
             Testimonial::create($formFields);
-
             return redirect()->route('testimonials')->with('message', 'Testimonial added successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Please fill the required fields.');
@@ -73,7 +77,7 @@ class TestimonialController extends Controller
         // Validate the request
         $formFields = $request->validate([
             'name' => 'required|string|max:255|unique:testimonials,name,' . $testimonial->id,
-            'rating' => 'required|integer|min:1|max:5',
+            'image'=> 'required|image|mimes:jpeg,png,jpg,webp', 
             'description' => 'required|string',
         ], [
             'name.unique' => 'A testimonial with this name already exists',
@@ -81,10 +85,20 @@ class TestimonialController extends Controller
 
         // Update slug
         $formFields['slug'] = Str::slug($formFields['name']);
-
+        if ($request->hasFile('image')) {
+            if (!empty($testimonial->image)) {
+                $oldImagePath = public_path('storage/' . $testimonial->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+            $uploadedFile = $request->file('image');
+            $fileName = time() . '-' . $uploadedFile->getClientOriginalName();
+            $mainImagePath = $uploadedFile->storeAs('testi$testimonials/image', $fileName, 'public');
+            $formFields['image'] = $mainImagePath;
+        }
         // Update testimonial
         $testimonial->update($formFields);
-
         return redirect()->route('testimonials')->with('message', 'Testimonial updated successfully');
     }
 
@@ -95,6 +109,14 @@ class TestimonialController extends Controller
     {
         try {
             $testimonial = Testimonial::whereSlug($slug)->firstOrFail();
+            if(!empty($testimonial->image))
+            {
+                $image_path = public_path('storage/'.$testimonial->image);
+                if(file_exists($image_path))
+                {
+                    unlink($image_path);
+                }
+            }
             $testimonial->delete();
 
             return redirect()->route('testimonials')->with('message', 'Testimonial deleted successfully');

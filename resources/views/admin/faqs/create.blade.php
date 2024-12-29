@@ -44,7 +44,7 @@
                                     @enderror
                                 </div>
                                 <button type="submit"
-                                    class="btn btn-primary btn-block rounded-pill mb-3">Create</button>
+                                    class="btn btn-primary btn-block rounded mb-3">Create</button>
                             </form>
                         </div>
                     </div>
